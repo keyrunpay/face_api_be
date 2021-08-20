@@ -1,0 +1,15 @@
+version: 0.0
+os: linux
+files:
+  - source: ./
+    destination: /home/ubuntu/momentous-cd
+    overwrite: true
+hooks:
+  AfterInstall:
+    - location: ./restart.sh
+      timeout: 300
+      runas: ubuntu
+  BeforeInstall:
+    - location: ./rmrf.sh
+      timeout: 300
+      runas: root
